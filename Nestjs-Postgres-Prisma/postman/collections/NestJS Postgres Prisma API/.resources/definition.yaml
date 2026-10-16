@@ -1,0 +1,13 @@
+$kind: collection
+name: 'NestJS Postgres Prisma API'
+description: |-
+  Collection for testing the NestJS + PostgreSQL + Prisma API.
+
+  ## Setup
+  1. Select the **NestJS Local** environment from the environment dropdown.
+  2. Make sure your NestJS server is running: `npm run start:dev`
+  3. The server runs on `http://localhost:3000` by default.
+
+  ## Endpoints
+  - **App** – Root health check (`GET /`)
+  - **Users** – User signup (`POST /users/signup`)

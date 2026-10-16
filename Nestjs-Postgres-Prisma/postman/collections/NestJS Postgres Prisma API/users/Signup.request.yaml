@@ -1,0 +1,30 @@
+$kind: http-request
+method: POST
+url: '{{base_url}}/users/signup'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "password": "password123"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status is 201", function () {
+        pm.response.to.have.status(201);
+      });
+
+      pm.test("Response has user data", function () {
+        const json = pm.response.json();
+        pm.expect(json).to.have.property("email");
+        pm.expect(json).to.have.property("firstName");
+        pm.expect(json).to.have.property("lastName");
+      });
